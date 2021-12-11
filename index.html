@@ -1,39 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .border{
-            border: solid 1px black;
+        .border {
             width: 600px;
             height: 600px;
             margin: auto;
             overflow: hidden;
         }
-        .moutain{
+
+        .background{
+            background-color: black;
+            position: relative;
+        }
+
+        .sky, .twinkle, .mountain, .cloud{
+            height: 400px;
+            width: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        .sky{
+            background: black url("/resources/img/stars.png") repeat top center;
+            z-index: -10;
+        }
+
+        .twinkle{
+            background: transparent url("resources/img/twinkling.png") repeat top center;
+            z-index: -5;
+            animation: twinkling 200s linear infinite;
+        }
+
+        .moon{
+            height: 20px;
+            width: 20px;
+            border-radius: 100%;
+            box-shadow: 0 0 10px 5px white;
+            position: absolute;
+            top: 50px;
+            right: 100px;
+
+            z-index: 0px;
+            background-color: white;
+        }
+
+        .cloud{
+            background: transparent url("resources/img/cloud.png") repeat top center;
+            background-size: cover;
+            opacity: 0.15;
+            z-index: -5;
+            animation: cloud 4000s linear infinite;
+        }
+
+        .mountain {
             padding-top: 200px;
             height: 200px;
-            background-color: black;
             background-size: cover;
-            position: relative;
-            
-            animation-name: moutain;
-            animation-duration: 4s;
-            animation-iteration-count: infinite;
 
-            opacity: 0.9;
+            z-index: 2;
         }
-        .kino{
+
+        .scenery{
+            position: relative;
+            top: 420px;
+        }
+
+        .kino {
             background-size: cover;
             height: 70px;
             position: relative;
             left: 50px;
             z-index: 1;
         }
-        .road{
+
+        .road {
             width: 5000px;
             height: 17px;
             position: relative;
@@ -47,7 +94,8 @@
             animation-iteration-count: infinite;
             animation-timing-function: linear;
         }
-        .tree1{
+
+        .tree1 {
             height: 100px;
             position: relative;
             top: -440px;
@@ -57,7 +105,8 @@
             animation-iteration-count: infinite;
             z-index: 100;
         }
-        .tree2{
+
+        .tree2 {
             height: 400px;
             position: relative;
             top: -20px;
@@ -66,7 +115,8 @@
             animation-duration: 2s;
             animation-iteration-count: infinite;
         }
-        .tree3{
+
+        .tree3 {
             height: 150px;
             position: relative;
             top: -320px;
@@ -77,42 +127,59 @@
             z-index: 10;
         }
 
-        @keyframes moutain {
-            0%{
-                right: 0px;
+        @keyframes cloud {
+            from{
+                background-position: 0 0;
             }
-            50%{
-                right: 10px;
+            to{
+                background-position: 10000px 0;
             }
-            100%{
-                right:0px;
+        }
+
+        @keyframes twinkling {
+            from{
+                background-position: 0 0;
+            }
+            to{
+                background-position: 10000px 10000px;
             }
         }
 
         @keyframes tree {
-            0%{
+            0% {
                 right: -1000px;
             }
-            100%{
+
+            100% {
                 right: 1000px;
             }
         }
 
         @keyframes road {
-            100%{
+            100% {
                 transform: translateX(-2000px);
             }
         }
     </style>
 </head>
+
 <body>
     <div class="border">
-        <img class="moutain" src="/resources/img/moutain.png" alt="kino and hermes">
-        <img class="kino" src="/resources/img/kinoandhermes.png" alt="kino and hermes">
-        <div class="road"></div>
-        <img class="tree1" src="/resources/img/tree1.png" alt="">
-        <img class="tree2" src="/resources/img/tree1.png" alt="">
-        <img class="tree3" src="/resources/img/tree1.png" alt="">
+        <div class="background">
+            <div class="sky"></div>
+            <div class="moon"></div>
+            <div class="twinkle"></div>
+            <div class="cloud">a</div>
+            <img class="mountain" src="/resources/img/moutain.png" alt="kino and hermes">
+        </div>
+        <div class="scenery">
+            <img class="kino" src="/resources/img/kinoandhermes.png" alt="kino and hermes">
+            <div class="road"></div>
+            <img class="tree1" src="/resources/img/tree1.png" alt="">
+            <img class="tree2" src="/resources/img/tree1.png" alt="">
+            <img class="tree3" src="/resources/img/tree1.png" alt="">
+        </div>
     </div>
 </body>
+
 </html>
